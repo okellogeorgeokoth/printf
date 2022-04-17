@@ -1,19 +1,40 @@
 #ifndef _PRINTF_MAIN_H
-#define _PRINTF_MAIN_H
+#define _PRINTF_MAIN-H
 
-#include "stdarg.h"
-#include "stdlib.h"
-#include "stdio.h"
+#include <stdarg.h>
+#include <unistd.h>
+#include <stdio.h>
+#include <limits.h>
+#include <stdlib.h>
 
+/**
+* struct types_arguments - Struct op
+*
+* @t: The operator
+* @f: The function associated
+*/
+typedef struct types_arguments
+{
+	char t;
+	int (*f)(va_list va);
+} types;
 int _putchar(char c);
-int _printf(const char *format, ...);
-int put_str(char *str);
-int put_int(long n);
-int get_printing_func(char a, va_list *ap);
-int put_rot13(char *s);
-char *rot13(char *s);
 int _strlen(char *s);
-char *_strcpy(char *dest, char *src);
-int put_binary(unsigned int n);
+int print_number(va_list va);
+int binary(va_list va);
+int print_unsigned(va_list va);
+int hexa(va_list va);
+int hexa_upper(va_list va);
+int octal(va_list va);
+int print_rot(va_list va);
+char *malloc_str(char *str);
+char *rot13(char *p);
+int print_rev(va_list va);
+int hexa_special(unsigned int c);
+int stringhexa(va_list va);
+int pointer(va_list va);
+int hexa_pointer(unsigned long int c);
+int _printf(const char *format, ...);
 
 #endif /* _PRINTF_MAIN_H */
+

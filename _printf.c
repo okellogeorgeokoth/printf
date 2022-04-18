@@ -1,43 +1,39 @@
 #include "main.h"
+
 /**
- * _printf - Print all this parameters
- * @format: input
+ * _printf - clone of the function printf in stdio.h
+ * @format: the string to be printed along with format specifiers preceded by %
  *
- * Description: function that prints output
- *
- * Return: The output character or num
+ * Return: the number of characters printed
  */
+
 int _printf(const char *format, ...)
 {
-	int x = 0, o_p = 0;
-	char *ptr = (char *) format, *output_p;
-	int (*ptr_func)(va_list, char *, int);
-	va_list vlist;
+	int char_count = 0; /* Total number of chars printed to stdout */
+	va_list ap; /* Contains the list of arguments passed after format */
+	int i; /* Used to loop through all characters in format */
 
-	if (!format)
+	va_start(ap, format);
+
+	if (format == NULL)
 		return (-1);
-	va_start(vlist, format);
-	output_p = malloc(sizeof(char) * SIZE);
-	if (!output_p)
-		return (1);
-	while (format[x])
+
+	for (i = 0; format[i] != 0; i++)
 	{
-		if (format[x] != '%')
-			output_p[o_p] = format[x], o_p++;
-		else if (s_trlen(ptr) != 1)
+		if (format[i] != '%')
 		{
-			ptr_func = format_type(++ptr);
-			if (!ptr_func)
-				output_p[o_p] = format[x], o_p++;
-			else
-				o_p = ptr_func(vlist, output_p, o_p), x++;
+			_putchar(format[i]);
+			char_count++;
+			continue;
 		}
-		else
-			o_p = -1;
-		x++, ptr++;
+
+		if (format[i + 1] == '\0')
+		{
+			return (-1);
+		}
+
+		char_count += get_printing_func(format[i + 1], &ap);
+		i++;
 	}
-	va_end(vlist);
-	write(1, output_p, o_p);
-	free(output_p);
-	return (o_p);
+	return (char_count);
 }

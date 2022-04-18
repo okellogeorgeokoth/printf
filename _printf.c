@@ -1,50 +1,39 @@
-#include "holberton.h"
+#include "main.h"
 
 /**
- * _printf - prints formatted data to stdout
- * @format: string that contains the format to print
- * Return: number of characters written
+ * _printf - clone of the function printf in stdio.h
+ * @format: the string to be printed along with format specifiers preceded by %
+ *
+ * Return: the number of characters printed
  */
-int _printf(char *format, ...)
+
+int _printf(const char *format, ...)
 {
-	int written = 0, (*structype)(char *, va_list);
-	char q[3];
-	va_list pa;
+	int char_count = 0; /* Total number of chars printed to stdout */
+	va_list ap; /* Contains the list of arguments passed after format */
+	int i; /* Used to loop through all characters in format */
+
+	va_start(ap, format);
 
 	if (format == NULL)
 		return (-1);
-	q[2] = '\0';
-	va_start(pa, format);
-	_putchar(-1);
-	while (format[0])
+
+	for (i = 0; format[i] != 0; i++)
 	{
-		if (format[0] == '%')
+		if (format[i] != '%')
 		{
-			structype = driver(format);
-			if (structype)
-			{
-				q[0] = '%';
-				q[1] = format[1];
-				written += structype(q, pa);
-			}
-			else if (format[1] != '\0')
-			{
-				written += _putchar('%');
-				written += _putchar(format[1]);
-			}
-			else
-			{
-				written += _putchar('%');
-				break;
-			}
-			format += 2;
+			_putchar(format[i]);
+			char_count++;
+			continue;
 		}
-		else
+
+		if (format[i + 1] == '\0')
 		{
-			written += _putchar(format[0]);
-			format++;
+			return (-1);
 		}
+
+		char_count += get_printing_func(format[i + 1], &ap);
+		i++;
 	}
-	_putchar(-2);
-	return (written);
+	return (char_count);
 }

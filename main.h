@@ -23,7 +23,17 @@
  * @space: flag for the ' ' character
  * @hash: flag for the '#' character
  */
-
+ 
+int _putchar(char c);
+int _printf(const char *format, ...);
+int put_str(char *str);
+int put_int(long n);
+int get_printing_func(char a, va_list *ap);
+int put_rot13(char *s);
+char *rot13(char *s);
+int _strlen(char *s);
+char *_strcpy(char *dest, char *src);
+int put_binary(unsigned int n);
 typedef struct modifiers
 {
 	_Bool plus;
@@ -95,4 +105,5 @@ void tusBasicTester(void);
 void tusAdvancedTester(void);
 void tusSuperAdvanced(void);
 
-#endif /* _PRINTF_MAIN_H */
+#endif
+

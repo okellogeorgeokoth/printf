@@ -1,5 +1,5 @@
-#ifndef _HOLBERTON_H
-#define _HOLBERTON_H
+#ifndef _MAIN_H
+#define _MAIN_H
 
 #define SIZE 2048
 

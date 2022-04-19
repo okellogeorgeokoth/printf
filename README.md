@@ -48,7 +48,7 @@ F - expletive
 Examples Character: printf("%c", A); Output:
 Character: printf("%c", A); Output:: A
 
-String: printf("%s", This is a string.); Output: This is a string.
+String: printf("%s", This is a string.); Output:
 
 Integer: printf("%i", 5); Output: 5
 

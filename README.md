@@ -61,7 +61,8 @@ Your code should use the Betty style.
 No more than 5 functions per file.
 You can use them to test your functions, but you don’t have to push them to your repo .
 We will use our own main.c files at compilation.
-The prototypes of all your functions should be included in your header file called main.h Don’t forget to push your header file All your header files should be include guarded Note that we will not provide the _putchar function for this project GitHub There should be one project repository per group. If you clone/fork/whatever a project repository with the same name before the second deadline, you risk a 0% score.
+The prototypes of all your functions should be included in your header file called main.h.
+All your header files should be include guarded Note that we will not provide the _putchar function for this project GitHub There should be one project repository per group. If you clone/fork/whatever a project repository with the same name before the second deadline, you risk a 0% score.
 
 Authorized functions and macros write (man 2 write) malloc (man 3 malloc) free (man 3 free) va_start (man 3 va_start) va_end (man 3 va_end) va_copy (man 3 va_copy) va_arg (man 3 va_arg)
 
